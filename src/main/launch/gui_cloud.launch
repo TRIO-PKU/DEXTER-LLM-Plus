@@ -1,0 +1,12 @@
+<launch>
+    <arg name="map_file" default="$(find main)/maps/real_factory_with_warehouse/real_factory_with_warehouse.png"/>
+    <arg name="map_scale" default="0.034622"/> <!-- map_size_x/pixel_width -->  
+
+    <node pkg="main" type="qt_cloud_interface.py" name="cloud_interface" output="screen">
+        <param name="map_image" value="$(arg map_file)"/>
+        <param name="map_scale" value="$(arg map_scale)"/>
+    </node>
+    <node pkg="main" type="verification_server.py" name="verification_server" output="screen">
+        <param name="name" value="cloud"/>
+    </node>
+</launch>

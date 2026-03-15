@@ -1,0 +1,5 @@
+<launch>	
+    <node pkg="simple_recorder" name="simple_recorder" type="simple_recorder.py" output="screen">
+		<param name="file_storage_path" value="$(find simple_recorder)/record" />
+	</node>
+</launch>

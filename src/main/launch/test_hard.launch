@@ -1,0 +1,92 @@
+<launch>
+    <arg name="odom_topic" value="visual_slam/odom" />
+    <param name="/config_path" value="$(find main)/launch/config_hci_hard.json" />
+    <param name="/log_dir" value="$(find main)/log/" />
+    <param name="/labels_file_path" value="$(find main)/yolo/classes.txt" />
+
+    <node pkg="simple_recorder" name="simple_recorder" type="simple_recorder.py" output="screen">
+		<param name="file_storage_path" value="$(find simple_recorder)/record" />
+	</node>
+
+    <node name="task_alloc_milp" pkg="task_alloc_milp" type="task_alloc_ros.py" output="screen">
+        <!-- <param name="log_dir" value="$(find main)/log/" /> -->
+    </node>
+
+    <node name="image_manager" pkg="main" type="image_manager.py" output="screen">
+        <param name="image_dir" value="$(find main)/images/" />
+    </node>
+
+    <node name="cloud" pkg="main" type="cloud_manager.py" output="screen">
+        <param name="my_edges" value="edge_exp,edge_1" />
+    </node>
+
+    <node name="edge_exp" pkg="main" type="edge_manager.py" output="screen">
+        <param name="my_ends" value="end_101" />
+        <param name="exp_task_config" value="-40,-16,40,16,8,4" /> <!-- x_min,y_min,x_max,y_max,z,block_size -->
+        <param name="detection_enabled" value="true" />
+        <param name="context_analysis_enabled" value="true" />
+    </node>
+    <node name="edge_1" pkg="main" type="edge_manager.py" output="screen">
+        <param name="detection_enabled" value="true" />
+        <param name="context_analysis_enabled" value="true" />
+        <param name="subtask_alloc_enabled" value="true" />
+    </node>
+
+    <node name="end_101" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="101" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="uheli" />
+        <param name="sensor_radius" value="2.0" /> <!-- sensor radius should be half of the block_size -->
+    </node>
+    <node name="end_1" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="1" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="uav" />
+    </node>
+    <node name="end_2" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="2" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="ugv" />
+    </node>
+    <node name="end_3" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="3" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="tugv" />
+    </node>
+    <node name="end_4" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="4" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="dog" />
+    </node>
+
+    <node name="end_5" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="5" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="uav" />
+    </node>
+    <node name="end_6" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="6" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="ugv" />
+    </node>
+    <node name="end_7" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="7" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="tugv" />
+    </node>
+    <node name="end_8" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="8" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="dog" />
+    </node>
+    <node name="end_9" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="9" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="tugv" />
+    </node>
+    <node name="end_10" pkg="main" type="end_manager.py" output="screen">
+        <param name="robot_id" value="10" />
+        <param name="odom_topic" value="$(arg odom_topic)" />
+        <param name="agent_type" value="dog" />
+    </node>
+</launch>

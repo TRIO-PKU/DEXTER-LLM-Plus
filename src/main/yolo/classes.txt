@@ -1,0 +1,15 @@
+activated_carbon
+alkane_gas_flame
+antidote
+asbestos_felt
+damaged_tank
+foam
+high_temperature_liquid_flame
+high_voltage_electrical_flame
+hydrogen_sulfide_leakage
+mental_net
+oxygen
+poisoned_person
+trapped_person
+valve
+water

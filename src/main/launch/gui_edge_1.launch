@@ -1,0 +1,45 @@
+<launch>
+    <arg name="name" default="edge_1"/>
+    <arg name="map_file" default="$(find main)/maps/real_factory_with_warehouse/real_factory_with_warehouse.png"/>
+    <arg name="map_scale" default="0.0351"/> <!-- map_size_x/pixel_width -->  
+
+    <node pkg="main" type="qt_edge_interface.py" name="$(arg name)_interface" output="screen">
+        <param name="map_image" value="$(arg map_file)"/>
+        <param name="map_scale" value="$(arg map_scale)"/>
+        <param name="edge_name" value="$(arg name)"/>
+    </node>
+    <node pkg="main" type="verification_server.py" name="$(arg name)_verification_server" output="screen">
+        <param name="name" value="$(arg name)"/>
+    </node>
+    <node pkg="main" type="gui_llm.py" name="$(arg name)_llm_server" output="screen">
+        <param name="name" value="$(arg name)"/>
+        <param name="api_key" value="ollama"/>
+        <param name="model" value="qwen3:8b"/>
+        <param name="api_base" value="http://127.0.0.1:11434/v1"/>
+        <param name="knowledge_base_path" value="$(find main)/launch/knowledge_base.json"/>
+        <!-- <param name="config" value="$(find main)/launch/config.json"/> -->
+    </node>
+    <node pkg="yolov7_ros" type="detect_ros.py" name="$(arg name)_detect" output="screen">
+        <!-- Download the official weights from the original repo -->
+        <param name="weights_path" type="str" value="$(find main)/yolo/best.pt"/>
+        <!-- Path to a class_labels.txt file containing your desired class labels. The i-th entry corresponds to the i-th class id. For example, in coco class label 0 corresponds to 'person'. Files for the coco and berkeley deep drive datasets are provided in the 'class_labels/' directory. If you leave it empty then no class labels are visualized.-->
+        <param name="classes_path" type="str" value="$(find main)/yolo/classes.txt" />
+        <!-- topic name to subscribe to -->
+        <param name="img_topic" type="str" value="/$(arg name)/original_image" />
+        <!-- topic name for the detection output -->
+        <param name="out_topic" type="str" value="/$(arg name)/detect_result" />
+        <!-- confidence threshold -->
+        <param name="conf_thresh" type="double" value="0.35" />
+        <!-- intersection over union threshold -->
+        <param name="iou_thresh" type="double" value="0.0" /> <!--0.45 -->
+        <!-- queue size for publishing -->
+        <param name="queue_size" type="int" value="1" />
+        <!-- image size to which to resize each input image before feeding into the
+        network (the final output is rescaled to the original image size) -->
+        <param name="img_size" type="int" value="640" />
+        <!-- flag whether to also publish image with the visualized detections -->
+        <param name="visualize" type="bool" value="true" />
+        <!-- 'cuda' or 'cpu' -->
+        <param name="device" type="str" value="cuda" />
+    </node>
+</launch>

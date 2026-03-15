@@ -1,0 +1,6 @@
+<launch>
+    <node name="visualizer" pkg="main" type="map.py" output="screen" 
+    args="package://main/maps/real_factory_with_warehouse/real_factory_with_warehouse.dae"/>
+    <node pkg="map_generator" name="map_pub" type="map_pub" output="screen"
+	args="$(find main)/maps/real_factory_with_warehouse/real_factory_with_warehouse.pcd" />
+</launch>

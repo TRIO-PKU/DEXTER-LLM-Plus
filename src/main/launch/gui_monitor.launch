@@ -1,0 +1,8 @@
+<launch>
+  <node name="rviz_view_main" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_main.rviz" required="true" />
+  <node name="rviz_view_1" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_1.rviz" required="true" />
+  <node name="rviz_view_2" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_2.rviz" required="true" />
+  <node name="rviz_view_3" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_3.rviz" required="true" />
+  <node name="rviz_view_4" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_4.rviz" required="true" />
+  <node name="rviz_view_5" pkg="rviz" type="rviz" args="-d $(find main)/launch/view_5.rviz" required="true" />
+</launch>

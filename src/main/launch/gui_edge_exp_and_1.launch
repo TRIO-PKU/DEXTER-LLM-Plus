@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find main)/launch/gui_edge_exp.launch"/>
+    <include file="$(find main)/launch/gui_edge_1.launch"/>
+</launch>

@@ -1,0 +1,56 @@
+<launch>
+    <!-- Map Config -->
+    <arg name="map_name" value="Factory"/>
+    <arg name="map_size_x" value="80.0"/>
+    <arg name="map_size_y" value="32.0"/>
+    <arg name="map_size_z" value="10.0"/>
+
+    <!-- Robot Config -->
+    <arg name="odom_topic" value="visual_slam/odom" />
+
+    <node name="simple_robot_simulator_1" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="-12.0"/>
+        <param name="init_y" value="-12.0"/>
+        <param name="init_z" value="0.3"/>
+        <param name="speed" value="1"/>
+        <remap from="/move_base_simple/goal" to="/drone_1_planning/waypoint"/>
+        <remap from="/odom" to="/drone_1_$(arg odom_topic)"/>
+    </node>
+
+    <node name="simple_robot_simulator_2" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="-14.0"/>
+        <param name="init_y" value="-12.0"/>
+        <param name="init_z" value="0.3"/>
+        <param name="speed" value="1"/>
+        <remap from="/move_base_simple/goal" to="/drone_2_planning/waypoint"/>
+        <remap from="/odom" to="/drone_2_$(arg odom_topic)"/>
+    </node>
+
+    <node name="simple_robot_simulator_3" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="-16.0"/>
+        <param name="init_y" value="-12.0"/>
+        <param name="init_z" value="0.3"/>
+        <param name="speed" value="1"/>
+        <remap from="/move_base_simple/goal" to="/drone_3_planning/waypoint"/>
+        <remap from="/odom" to="/drone_3_$(arg odom_topic)"/>
+    </node>
+
+    <node name="simple_robot_simulator_4" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="-18.0"/>
+        <param name="init_y" value="-12.0"/>
+        <param name="init_z" value="0.3"/>
+        <param name="speed" value="1"/>
+        <remap from="/move_base_simple/goal" to="/drone_4_planning/waypoint"/>
+        <remap from="/odom" to="/drone_4_$(arg odom_topic)"/>
+    </node>
+
+    <node name="simple_robot_simulator_101" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="-20.0"/>
+        <param name="init_y" value="-12.0"/>
+        <param name="init_z" value="0.3"/>
+        <param name="speed" value="1"/>
+        <remap from="/move_base_simple/goal" to="/drone_101_planning/waypoint"/>
+        <remap from="/odom" to="/drone_101_$(arg odom_topic)"/>
+    </node>
+
+</launch>

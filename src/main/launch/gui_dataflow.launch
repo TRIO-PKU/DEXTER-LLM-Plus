@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="main" type="dataflow_graph.py" name="dataflow_graph" output="screen"/>
+</launch>

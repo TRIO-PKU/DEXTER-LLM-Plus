@@ -1,0 +1,835 @@
+{
+    "skills": {
+        "explore": {
+            "description": "探索"
+        },
+        "inspect": {
+            "description": "侦察"
+        },
+        "operate": {
+            "description": "操作"
+        },
+        "liquid_spray": {
+            "description": "液喷"
+        },
+        "solid_spray": {
+            "description": "固喷"
+        },
+        "gas_spray": {
+            "description": "气喷"
+        },
+        "monitor": {
+            "description": "监控"
+        },
+        "clean_up": {
+            "description": "清理"
+        },
+        "throw": {
+            "description": "投掷"
+        },
+        "lay": {
+            "description": "铺设"
+        },
+        "detect": {
+            "description": "检测"
+        },
+        "transport": {
+            "description": "运输"
+        },
+        "build": {
+            "description": "构筑"
+        },
+        "rescue": {
+            "description": "救护"
+        },
+        "ignite": {
+            "description": "点火"
+        },
+        "fix": {
+            "description": "修理"
+        }
+    },
+    "agent_types": {
+        "uheli": {
+            "description": "无人直升机",
+            "skills": [
+                "global_explore"
+            ],
+            "model_path": [
+                "uheli/frame1.stl",
+                "uheli/frame2.stl",
+                "uheli/frame3.stl"
+            ],
+            "animation_freq": 10,
+            "max_vel": 2
+        },
+        "uav": {
+            "description": "无人机",
+            "skills": [
+                "local_explore",
+                "inspect",
+                "liquid_spray",
+                "gas_spray",
+                "monitor",
+                "ignite",
+                "detect",
+                "throw"
+            ],
+            "model_path": [
+                "uav/frame1.stl",
+                "uav/frame2.stl",
+                "uav/frame3.stl"
+            ],
+            "animation_freq": 10,
+            "max_vel": 2
+        },
+        "ugv": {
+            "description": "无人地面车",
+            "skills": [
+                "local_explore",
+                "inspect",
+                "monitor",
+                "solid_spray",
+                "liquid_spray",
+                "ignite",
+                "gas_spray",
+                "transport"
+            ],
+            "model_path": "ugv/ugv.stl",
+            "max_vel": 2
+        },
+        "tugv": {
+            "description": "无人履带车",
+            "skills": [
+                "local_explore",
+                "inspect",
+                "monitor",
+                "solid_spray",
+                "liquid_spray",
+                "gas_spray",
+                "transport",
+                "build",
+                "lay",
+                "clean_up"
+            ],
+            "model_path": "tugv/tugv.stl",
+            "animation_freq": 3,
+            "max_vel": 2
+        },
+        "dog": {
+            "description": "机器狗",
+            "skills": [
+                "local_explore",
+                "inspect",
+                "monitor",
+                "operate",
+                "build",
+                "rescue",
+                "ignite",
+                "fix",
+                "clean_up"
+            ],
+            "model_path": [
+                "dog/frame1.stl",
+                "dog/frame2.stl"
+            ],
+            "animation_freq": 3,
+            "max_vel": 2
+        }
+    },
+    "feature_types": {
+        "alkane_gas_flame": {
+            "type": "task",
+            "context_analysis": "The term 'alkane_gas_flame' refers to a flame produced by the combustion of alkane gases. This involves a hazardous scenario related to combustion, which aligns with the task definition emphasizing specific actions that need to be carried out in emergency or dangerous situations.",
+            "subtask_gen_analysis": "To handle the hazardous scenario of an alkane gas flame, we need a combination of skills aimed at controlling the source of combustion, suppressing the fire, and ensuring safety. The key is to first inspect the situation to gather critical information about the gas source and surrounding risks. Next, operating valves or switches can help control the flow of alkane gas, reducing the fuel supply. Suppression techniques like liquid spray (using water or foam) will cool the flames and block oxygen, while monitoring ensures that the fire is fully extinguished and no hazards remain. Cleanup may also be necessary to address residual risks.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "operate",
+                "liquid_spray",
+                "monitor"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "operate",
+                        "resource": "",
+                        "target": "valve",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                },
+                "scheme_2": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "liquid_spray",
+                        "resource": "water",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "high_temperature_liquid_flame": {
+            "type": "task",
+            "description": "高温液体火焰",
+            "context_analysis": "The 'high_temperature_liquid_flame' feature refers to a fire caused by the combustion of high-temperature liquid substances. Such scenarios are highly hazardous due to the intense heat and fluidity of the burning material, which can spread rapidly and cause secondary hazards.",
+            "subtask_gen_analysis": "Responding to a high-temperature liquid flame requires a sequence of actions: first, inspect the scene to assess the fire's extent and potential spread. Solid spray (such as powder or dry ice) can be used to suppress the flames and lower the temperature. Cleanup is essential to remove residual hazards, and throwing fire extinguishing bombs or laying asbestos felt can provide additional suppression and isolation. Monitoring and detection ensure the fire is fully controlled and no hidden dangers remain.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "lay",
+                "liquid_spray",
+                "monitor"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "lay",
+                        "resource": "asbestos_felt",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "liquid_spray",
+                        "resource": "water",
+                        "target": "this",
+                        "dependency": [
+                            2
+                        ]
+                    },
+                    "4": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "high-voltage_electrical_flame": {
+            "type": "task",
+            "description": "高压电气火焰",
+            "context_analysis": "The 'high-voltage_electrical_flame' feature refers to fires caused by high-voltage electrical equipment. These scenarios are dangerous due to the risk of electric shock, rapid fire spread, and the need for specialized extinguishing agents.",
+            "subtask_gen_analysis": "To address a high-voltage electrical flame, first operate switches to cut off power and reduce risk. Use appropriate liquid sprays (such as foam or water) and build fire dikes to contain the fire. Gas sprays with inert gas can further suppress combustion. Inspection and monitoring are essential throughout to ensure safety and complete extinguishment.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "liquid_spray",
+                "monitor",
+                "operate",
+                "lay"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "operate",
+                        "resource": "",
+                        "target": "switch",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "liquid_spray",
+                        "resource": "foam",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "lay",
+                        "resource": "mental_net",
+                        "target": "this",
+                        "dependency": [
+                            2
+                        ]
+                    },
+                    "4": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                },
+                "scheme_2": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "operate",
+                        "resource": "",
+                        "target": "switch",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "trapped_person": {
+            "type": "task",
+            "description": "被困人员",
+            "context_analysis": "The 'trapped_person' feature represents a scenario where individuals are unable to escape from a hazardous environment due to obstacles or dangerous conditions. Timely rescue is critical to prevent injury or loss of life.",
+            "subtask_gen_analysis": "Rescuing a trapped person involves inspecting the scene to locate and assess the victim's condition, cleaning up debris or hazards, performing rescue operations, and transporting the individual to a safe location such as a rescue station. Each step must be coordinated to ensure the safety of both the victim and rescuers.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "clean_up",
+                "rescue",
+                "monitor"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "clean_up",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "rescue",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            2
+                        ]
+                    },
+                    "4": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "poisoned_person": {
+            "type": "task",
+            "description": "中毒人员",
+            "context_analysis": "The 'poisoned_person' feature refers to individuals exposed to toxic substances, requiring immediate intervention to prevent further harm. Such scenarios demand rapid assessment and application of antidotes or supportive measures.",
+            "subtask_gen_analysis": "Handling a poisoned person requires inspecting the situation to identify the toxin and the victim's status, administering antidotes or oxygen as needed, and monitoring the individual's condition. Rescue operations may involve moving the person to a safer environment and providing ongoing support until recovery.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "rescue",
+                "gas_spray",
+                "monitor"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "rescue",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "gas_spray",
+                        "resource": "oxygen",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "4": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                },
+                "scheme_2": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "rescue",
+                        "resource": "antidote",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "hydrogen_sulfide_leakage": {
+            "type": "task",
+            "description": "硫化氢泄漏",
+            "context_analysis": "The 'hydrogen_sulfide_leakage' feature represents the release of toxic hydrogen sulfide gas, which poses severe health and explosion risks. Immediate containment and neutralization are essential.",
+            "subtask_gen_analysis": "Responding to hydrogen sulfide leakage involves building fire dikes to contain the spread, igniting the gas in a controlled manner if safe, and monitoring the area for residual hazards. Liquid sprays with neutralizing agents like calcium hydroxide can further reduce risks. Inspection and ongoing monitoring are critical for safety.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "inspect",
+                "ignite",
+                "monitor",
+                "solid_spray"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "inspect",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "ignite",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "required_skill": "solid_spray",
+                        "resource": "activated_carbon",
+                        "target": "this",
+                        "dependency": [
+                            2
+                        ]
+                    },
+                    "4": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "damaged_tank": {
+            "type": "task",
+            "description": "储罐保护",
+            "context_analysis": "The 'tank_protection' feature refers to measures taken to safeguard storage tanks from fire, leaks, or other hazards. Protecting tanks is vital to prevent large-scale accidents and environmental damage.",
+            "subtask_gen_analysis": "Tank protection tasks involve applying liquid sprays (such as water) to cool and shield the tank, monitoring for signs of damage or leaks, and performing repairs as needed. Timely intervention can prevent escalation and ensure the integrity of storage facilities.",
+            "dep_task_types": [],
+            "basic_required_skills": [
+                "liquid_spray",
+                "monitor",
+                "fix"
+            ],
+            "schemes": {
+                "scheme_1": {
+                    "1": {
+                        "required_skill": "liquid_spray",
+                        "resource": "water",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "2": {
+                        "required_skill": "monitor",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": []
+                    },
+                    "3": {
+                        "required_skill": "fix",
+                        "resource": "",
+                        "target": "this",
+                        "dependency": [
+                            1
+                        ]
+                    }
+                }
+            }
+        },
+        "valve": {
+            "type": "resource",
+            "description": "阀门",
+            "context_analysis": "A 'valve' is a mechanical device used to control the flow of liquids or gases. In emergency scenarios, operating valves is essential for isolating hazards and stopping the spread of dangerous substances."
+        },
+        "switch": {
+            "type": "resource",
+            "description": "电闸",
+            "context_analysis": "A 'switch' is an electrical device used to open or close circuits. In hazardous situations, switches are operated to cut off power and reduce the risk of electrical fires or shocks."
+        },
+        "water": {
+            "type": "resource",
+            "description": "水",
+            "context_analysis": "'Water' is a common extinguishing agent used to cool fires, dilute hazardous substances, and provide a barrier against heat. It is essential in many fire suppression and protection tasks."
+        },
+        "foam": {
+            "type": "resource",
+            "description": "泡沫",
+            "context_analysis": "'Foam' is a fire suppression agent that forms a barrier over flammable liquids, cutting off oxygen and preventing re-ignition. It is especially useful for liquid fires."
+        },
+        "activated_carbon": {
+            "type": "resource",
+            "description": "活性炭",
+            "context_analysis": "'Activated carbon' is a material used to adsorb hazardous gases and chemicals, aiding in containment and cleanup during chemical spills or leaks."
+        },
+        "asbestos_felt": {
+            "type": "resource",
+            "description": "石棉毡",
+            "context_analysis": "'Asbestos felt' is a heat-resistant material used to isolate and suppress fires, especially in high-temperature or chemical fire scenarios."
+        },
+        "oxygen": {
+            "type": "resource",
+            "description": "氧气",
+            "context_analysis": "'Oxygen' is essential for life support and medical rescue, especially for individuals exposed to toxic gases or suffering from respiratory distress."
+        },
+        "metal_net": {
+            "type": "resource",
+            "description": "金属网",
+            "context_analysis": "'Metal net' is used as a protective barrier to isolate hazards, contain debris, or prevent the spread of fire in industrial settings."
+        },
+        "antidote": {
+            "type": "resource",
+            "description": "解毒剂",
+            "context_analysis": "'Antidote' refers to substances administered to counteract the effects of poisoning, playing a critical role in medical rescue operations."
+        }
+    },
+    "feature_instances": {
+        "activated_carbon": {
+            "type": "activated_carbon",
+            "visibility": "coarse",
+            "position": [
+                11.2,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "alkane_gas_flame": {
+            "type": "alkane_gas_flame",
+            "visibility": "coarse",
+            "position": [
+                -23.7945,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "alkane_gas_flame.001": {
+            "type": "alkane_gas_flame",
+            "visibility": "manual",
+            "position": [
+                -13.1782,
+                0.4847,
+                0.5
+            ],
+            "discovered_time": 101.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "antidote": {
+            "type": "antidote",
+            "visibility": "coarse",
+            "position": [
+                24.841,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "asbestos_felt": {
+            "type": "asbestos_felt",
+            "visibility": "coarse",
+            "position": [
+                14.4,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "asbestos_felt.001": {
+            "type": "asbestos_felt",
+            "visibility": "manual",
+            "position": [
+                5.7446,
+                5.3495,
+                0.5
+            ],
+            "discovered_time": 234.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "damaged_tank": {
+            "type": "damaged_tank",
+            "visibility": "coarse",
+            "position": [
+                -4.6731,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "damaged_tank.001": {
+            "type": "damaged_tank",
+            "visibility": "manual",
+            "position": [
+                18.483,
+                -9.9005,
+                0.5
+            ],
+            "discovered_time": 471.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "foam": {
+            "type": "foam",
+            "visibility": "coarse",
+            "position": [
+                8.0171,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "high_temperature_liquid_flame": {
+            "type": "high_temperature_liquid_flame",
+            "visibility": "coarse",
+            "position": [
+                -20.5945,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "high_voltage_electrical_flame": {
+            "type": "high-voltage_electrical_flame",
+            "visibility": "coarse",
+            "position": [
+                -17.4731,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "hydrogen_sulfide_leakage": {
+            "type": "hydrogen_sulfide_leakage",
+            "visibility": "coarse",
+            "position": [
+                -7.8731,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "metal_net": {
+            "type": "metal_net",
+            "visibility": "coarse",
+            "position": [
+                21.641,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "oxygen": {
+            "type": "oxygen",
+            "visibility": "coarse",
+            "position": [
+                17.9888,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "poisoned_person": {
+            "type": "poisoned_person",
+            "visibility": "coarse",
+            "position": [
+                -11.0731,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "switch": {
+            "type": "switch",
+            "visibility": "coarse",
+            "position": [
+                1.6171,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "trapped_person": {
+            "type": "trapped_person",
+            "visibility": "coarse",
+            "position": [
+                -14.2731,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "trapped_person.001": {
+            "type": "trapped_person",
+            "visibility": "manual",
+            "position": [
+                2.6631,
+                -6.4534,
+                0.5
+            ],
+            "discovered_time": 359.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "valve": {
+            "type": "valve",
+            "visibility": "coarse",
+            "position": [
+                -1.5829,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "valve.001": {
+            "type": "valve",
+            "visibility": "fine",
+            "position": [
+                -11.4373,
+                0.1038,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "water": {
+            "type": "water",
+            "visibility": "coarse",
+            "position": [
+                4.8171,
+                20.0,
+                0.5
+            ],
+            "discovered_time": 1.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        },
+        "water.001": {
+            "type": "water",
+            "visibility": "manual",
+            "position": [
+                -21.8486,
+                -9.351,
+                0.5
+            ],
+            "discovered_time": 18.0,
+            "alloc_to": "",
+            "choose_scheme": ""
+        }
+    }
+}
