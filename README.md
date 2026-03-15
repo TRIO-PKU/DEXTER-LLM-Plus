@@ -1,10 +1,32 @@
-# DEXTER-LLM-Plus 🚀🤖
+# Neuro-symbolic AI for reliable human-swarm collaboration in complex environments 🚀🤖
 
-![Cover](docs/static/images/video_cover.webp)
+![Cover](docs/static/images/video_cover.jpg)
 
 ## Abstract
 
-Multi-robot systems including unmanned aerial vehicles, ground robots, and legged platforms are increasingly deployed to assist humans in complex collaborative missions such as disaster response. However, in open, unknown and dynamically evolving environments, manually coordinating a fleet of robots under real-time constraints poses severe physical and cognitive burdens on human operators, e.g., for scene understanding, task decomposition, task assignment and progress monitoring. While large language models (LLMs) have shown promising roles in multi-robot coordination by processing multimodal inputs and assisting decision making, their susceptibility to hallucinations and logical inconsistencies remains a critical bottleneck for long-term and complex missions. To address this challenge, we introduce the novel framework that adopts the rigorous and explainable algorithmic structure of formal methods, as a backbone to specify, decompose, assign and monitor the contingent tasks. Meanwhile, the intermediate outputs from LLMs such as semantic labels, task strategies and execution progress are grounded, verified and supervised within different stages of the framework. Thus, the operator is required only high-level confirmations at key events, while being fully aware of how the LLMs outputs are ultilized and whether they are aligned with the current objective. Lastly, to enable this real-time, online and highly interactive framework, a cloud-edge-end software architecture is developed that streamlines the information flow among the base station, the operator-fleet teams, andtherobots,withformalmethods-basedplanningmodulesandLLMsdeployed across all layers. The proposed frameworkpreservestheopen-worldreasoningcapabilities of LLMs while leveraging the rigorous guarantees of formal methods, It is validated through large-scale human-in-the-loop simulations and physical deployments involving 40 robots and 160 long-term tasks. Reliability, explainability and efficiency have been evaluated throughly and all shown significant improvements. We anticipate that our system will pave the way for more effective human-fleet teaming in safety-critical real-world scenarios.
+Robot swarms promise scalable assistance in complex and hazardous environments.
+Task planning lies at the core of human–swarm collaboration, translating the operator’s intent into
+coordinated swarm actions and helping determine when validation or intervention is required
+during execution. In long-horizon missions under dynamic scenarios, however, reliable task
+planning becomes difficult to maintain: emerging events and changing conditions demand
+continual adaptation, and sustained operator oversight imposes substantial cognitive burden.
+Existing LLM-based planning tools can support plan generation, yet they remain susceptible to
+invalid task orderings and infeasible robot actions, resulting in frequent manual adjustment. Here
+we introduce a neuro-symbolic framework for long-horizon human-swarm collaboration that
+tightly couples verifiable task planning with context-grounded LLM reasoning. We formalize
+mission goals and operational rules as temporal logic formulas and admissible task orderings as
+task automata. Conditioned on these formal constraints and live perceptual context, LLMs
+generate executable subtask sequences that satisfy mission rules and remain grounded in the
+current scene. An uncertainty-aware scheduler then assigns subtasks across the heterogeneous
+swarm to maximize parallelisms while remaining resilient to disruptions. An event-triggered
+interaction protocol further limits operator involvement to sparse, high-level confirmation and
+guidance. In large-scale simulations with more than 40 robots executing 41 tasks with 155
+subtasks in 11-minute missions, our system improves task success rates by 26% and increases
+completed tasks by 132% relative to state-of-the-art baselines. At the same time, it reduces
+operator interventions by 77% and lowers physiological stress by 49%. Deployment on a
+heterogeneous robotic fleet yields similar results while remaining robust to hardware-specific
+actuation and communication uncertainties. Together, these results support a formal and scalable
+paradigm for reliable and low-overhead human–swarm collaboration in dynamic environments.
 
 ## Code
 

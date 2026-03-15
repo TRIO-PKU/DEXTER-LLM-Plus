@@ -7,8 +7,7 @@
 
   <!-- Primary Meta Tags -->
   <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="LLMs Meet Formal Methods for Robot Swarms: 
-  Reliable, Explainable and Human-in-the-loop Planning in Open Environments">
+  <meta name="title" content="Neuro-symbolic AI for reliable human-swarm collaboration in complex environments">
   <!-- TODO: Write a compelling 150-160 character description of your research -->
   <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
@@ -24,8 +23,7 @@
   <!-- TODO: Replace with your institution or lab name -->
   <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
   <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="LLMs Meet Formal Methods for Robot Swarms: 
-  Reliable, Explainable and Human-in-the-loop Planning in Open Environments">
+  <meta property="og:title" content="Neuro-symbolic AI for reliable human-swarm collaboration in complex environments">
   <!-- TODO: Same as description above -->
   <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
   <!-- TODO: Replace with your actual website URL -->
@@ -241,8 +239,7 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <!-- TODO: Replace with your paper title -->
-              <h1 class="title is-1 publication-title">LLMs Meet Formal Methods for Robot Swarms: Reliable, Explainable
-                and Human-in-the-loop Planning in Open Environments</h1>
+              <h1 class="title is-1 publication-title">Neuro-symbolic AI for reliable human-swarm collaboration in complex environments</h1>
               <div class="is-size-5 publication-authors">
                 <!-- TODO: Replace with your paper authors and their personal links -->
                 <span class="author-block">
@@ -268,7 +265,7 @@
 
               <div class="is-size-5 publication-authors">
                 <!-- TODO: Replace with your institution and conference/journal info -->
-                <span class="author-block">Institution Name<br>Conference name and year</span>
+                <!-- <span class="author-block">Institution Name<br>Conference name and year</span> -->
                 <!-- TODO: Remove this line if no equal contribution -->
                 <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
               </div>
@@ -332,15 +329,12 @@
       <div class="container is-max-desktop">
         <div class="hero-body">
           <!-- TODO: Replace with your teaser video -->
-          <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-            <!-- TODO: Add your video file path here -->
-            <source src="static/videos/banner_video.mp4" type="video/mp4">
-          </video>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/yFJzzWFL3kQ?si=RcNrNujiCjL8ATDd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <!-- TODO: Replace with your video description -->
-          <h2 class="subtitle has-text-centered">
+          <!-- <h2 class="subtitle has-text-centered">
             Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat
             pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
-          </h2>
+          </h2> -->
         </div>
       </div>
     </section>
@@ -355,7 +349,29 @@
             <div class="content has-text-justified">
               <!-- TODO: Replace with your paper abstract -->
               <p>
-                Multi-robot systems including unmanned aerial vehicles, ground robots, and legged platforms are increasingly deployed to assist humans in complex collaborative missions such as disaster response. However, in open, unknown and dynamically evolving environments, manually coordinating a fleet of robots under real-time constraints poses severe physical and cognitive burdens on human operators, e.g., for scene understanding, task decomposition, task assignment and progress monitoring. While large language models (LLMs) have shown promising roles in multi-robot coordination by processing multimodal inputs and assisting decision making, their susceptibility to hallucinations and logical inconsistencies remains a critical bottleneck for long-term and complex missions. To address this challenge, we introduce the novel framework that adopts the rigorous and explainable algorithmic structure of formal methods, as a backbone to specify, decompose, assign and monitor the contingent tasks. Meanwhile, the intermediate outputs from LLMs such as semantic labels, task strategies and execution progress are grounded, verified and supervised within different stages of the framework. Thus, the operator is required only high-level confirmations at key events, while being fully aware of how the LLMs outputs are ultilized and whether they are aligned with the current objective. Lastly, to enable this real-time, online and highly interactive framework, a cloud-edge-end software architecture is developed that streamlines the information flow among the base station, the operator-fleet teams, andtherobots,withformalmethods-basedplanningmodulesandLLMsdeployed across all layers. The proposed frameworkpreservestheopen-worldreasoningcapabilities of LLMs while leveraging the rigorous guarantees of formal methods, It is validated through large-scale human-in-the-loop simulations and physical deployments involving 40 robots and 160 long-term tasks. Reliability, explainability and efficiency have been evaluated throughly and all shown significant improvements. We anticipate that our system will pave the way for more effective human-fleet teaming in safety-critical real-world scenarios.
+                Robot swarms promise scalable assistance in complex and hazardous environments. 
+                Task planning lies at the core of human–swarm collaboration, translating the operator’s intent into
+                coordinated swarm actions and helping determine when validation or intervention is required
+                during execution. In long-horizon missions under dynamic scenarios, however, reliable task
+                planning becomes difficult to maintain: emerging events and changing conditions demand
+                continual adaptation, and sustained operator oversight imposes substantial cognitive burden.
+                Existing LLM-based planning tools can support plan generation, yet they remain susceptible to
+                invalid task orderings and infeasible robot actions, resulting in frequent manual adjustment. Here
+                we introduce a neuro-symbolic framework for long-horizon human-swarm collaboration that
+                tightly couples verifiable task planning with context-grounded LLM reasoning. We formalize
+                mission goals and operational rules as temporal logic formulas and admissible task orderings as
+                task automata. Conditioned on these formal constraints and live perceptual context, LLMs
+                generate executable subtask sequences that satisfy mission rules and remain grounded in the
+                current scene. An uncertainty-aware scheduler then assigns subtasks across the heterogeneous
+                swarm to maximize parallelisms while remaining resilient to disruptions. An event-triggered
+                interaction protocol further limits operator involvement to sparse, high-level confirmation and
+                guidance. In large-scale simulations with more than 40 robots executing 41 tasks with 155
+                subtasks in 11-minute missions, our system improves task success rates by 26% and increases
+                completed tasks by 132% relative to state-of-the-art baselines. At the same time, it reduces
+                operator interventions by 77% and lowers physiological stress by 49%. Deployment on a
+                heterogeneous robotic fleet yields similar results while remaining robust to hardware-specific
+                actuation and communication uncertainties. Together, these results support a formal and scalable
+                paradigm for reliable and low-overhead human–swarm collaboration in dynamic environments.
               </p>
             </div>
           </div>
@@ -372,52 +388,38 @@
           <div id="results-carousel" class="carousel results-carousel">
             <div class="item">
               <!-- TODO: Replace with your research result images -->
-              <img src="static/images/cover.webp" alt="First research result visualization" loading="lazy" />
+              <img src="static/images/figure_1.jpg" alt="First research result visualization" loading="lazy" />
               <!-- TODO: Replace with description of this result -->
               <h2 class="subtitle has-text-centered">
-                Overview of the proposed system.
+                Fig. 1. An illustration of the proposed method for task planning of swarms.
               </h2>
             </div>
             <div class="item">
               <!-- Your image here -->
-              <img src="static/images/framework.webp" alt="Second research result visualization" loading="lazy" />
+              <img src="static/images/figure_2.jpg" alt="Second research result visualization" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Framework overview.
+                Fig. 2. Framework overview.
               </h2>
             </div>
             <div class="item">
               <!-- Your image here -->
-              <img src="static/images/results_overview_1.webp" alt="Third research result visualization" loading="lazy" />
+              <img src="static/images/figure_3.jpg" alt="Third research result visualization" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Overview of Experimental Results (Part 1).
+                Fig. 3. Planning reliability comparison.
               </h2>
             </div>
             <div class="item">
               <!-- Your image here -->
-              <img src="static/images/results_overview_2.webp" alt="Fourth research result visualization" loading="lazy" />
+              <img src="static/images/figure_4.jpg" alt="Fourth research result visualization" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Overview of Experimental Results (Part 2).
+                Fig. 4. Human-swarm collaboration experiment.
               </h2>
             </div>
             <div class="item">
               <!-- Your image here -->
-              <img src="static/images/reliability_1.webp" alt="Third research result visualization" loading="lazy" />
+              <img src="static/images/figure_5.jpg" alt="Third research result visualization" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Planning reliability in complex environments (Part 1).
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/reliability_2.webp" alt="Fourth research result visualization" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Planning reliability in complex environments (Part 2).
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/explain.webp" alt="Fourth research result visualization" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Planning explainability in unknown environments.
+                Fig. 5. Complex real-world experiment.
               </h2>
             </div>
           </div>
@@ -440,7 +442,7 @@
 
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/lxQBnLasXFE?si=ji8g5UAd0-bBq27e" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yFJzzWFL3kQ?si=iePYa587tU9T-XPB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -459,35 +461,35 @@
               <!-- TODO: Add poster image for better preview -->
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/FSeqXdFRm-M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/F1dgwmv5dmE?si=kYjpwk7tBpTiW98p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
             <div class="item item-video2">
               <!-- TODO: Add poster image for better preview -->
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/63RTIRhT5m4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/oqV6XkAzggA?si=JpjnsuquARMqsq5C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
             <div class="item item-video3">
               <!-- TODO: Add poster image for better preview -->
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/2FTWJZkQyU8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PuWEIYNJQuI?si=8aFKMfT8YmuS_vCn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
             <div class="item item-video4">
               <!-- TODO: Add poster image for better preview -->
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/MTdlxRoZkdM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vmouzm2ikEc?si=oLlYcmFZYa8pgoO9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
             <div class="item item-video5">
               <!-- TODO: Add poster image for better preview -->
               <div class="publication-video">
                 <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/Cd03hH-qFko" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SUtXCjYSK18?si=JwuShuilibt5x0mO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
           </div>
