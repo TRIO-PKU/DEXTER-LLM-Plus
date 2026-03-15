@@ -1,6 +1,13 @@
 # Neuro-symbolic AI for reliable human-swarm collaboration in complex environments 🚀🤖
 
 ![Cover](docs/static/images/video_cover.jpg)
+<p align="center">
+    <img width="110px" height="21px" src="https://img.shields.io/badge/Ubuntu-20.04-orange?logo=Ubuntu&Ubuntu-20.04" alt="ubuntu" />
+    <img width="110px" height="21px" src="https://img.shields.io/badge/ROS-noetic-green?logo=ROS&ROS=noetic" alt="ROS" />
+    <img width="110px" height="21px" src="https://img.shields.io/badge/Python-3.8-blue?logo=Python&Python=3.8" alt="Python" />
+    <img width="110px" height="21px" src="https://img.shields.io/badge/Gurobi-11.0.3-red?logo=Gurobi&Gurobi=11.0.3" alt="Gurobi" />
+    <img width="110px" height="21px" src="https://img.shields.io/badge/License-GPLv3-yellow?logo=Open%20Source%20Initiative" alt="License" />
+</p>
 
 ## Abstract
 
@@ -28,9 +35,84 @@ heterogeneous robotic fleet yields similar results while remaining robust to har
 actuation and communication uncertainties. Together, these results support a formal and scalable
 paradigm for reliable and low-overhead human–swarm collaboration in dynamic environments.
 
-## Code
+## Installation
 
-Code Coming Soon!
+Pre-Requirements
+
+- Ubuntu 20.04
+- ROS Noetic Desktop
+- Gurobi Optimizer (11.3) (Optional)
+
+Clone this repo
+
+```bash
+git clone https://github.com/TCXM/DEXTER-LLM-Plus-dev.git --recursive
+```
+
+ROS Packages
+
+```bash
+sudo apt install ros-noetic-vision-msgs
+```
+
+Python packages
+
+```bash
+pip3 install -r requirements.txt
+```
+
+Online Resources:
+1. Download yolov7 weights to ```src/main/yolo```
+2. Download images to ```src/main/images```
+3. Download robot models to ```src/main/models```
+4. Download maps to ```src/main/maps/real_factory_with_warehouse``` 
+
+```bash
+pip install gdown
+gdown --folder https://drive.google.com/drive/folders/1LWn4c0Rq8vLXU6id67dR_m4aibuWsa7n --output src/main/yolo
+gdown --folder https://drive.google.com/drive/folders/1OBv168ciQgxPTAMIZAYhfNQRBkFl--dO --output src/main/images
+gdown --folder https://drive.google.com/drive/folders/1Zt9-Sh8yw-wjQ1nHR6hvVyrjyVy-TdXw --output src/main/models
+gdown --folder https://drive.google.com/drive/folders/1hfNx5MJ9JXYOrRsRYWC6_uERziUY6fAQ --output src/main/maps/real_factory_with_warehouse
+```
+
+Make this workspace:
+
+```bash
+catkin_make
+```
+
+## LLM Setup
+
+A local instance of Ollama is used by default. To use a custom LLM, you must update the endpoint and credentials in the launch file of each edge node, such as [src/main/launch/gui_edge_1.launch](src/main/launch/gui_edge_1.launch) and [src/main/launch/gui_edge_exp.launch](src/main/launch/gui_edge_exp.launch).
+
+Update the following LLM parameters accordingly:
+```xml
+<param name="api_key" value=""/>
+<param name="model" value=""/>
+<param name="api_base" value=""/>
+```
+
+## Run HCI Experiment
+
+Terminal 1:
+```bash
+source devel/setup.bash
+roslaunch main gui_edge_exp_and_1.launch
+```
+
+Terminal 2:
+```bash
+source devel/setup.bash
+roslaunch main sim.launch
+```
+
+Terminal 3:
+```bash
+source devel/setup.bash
+roslaunch main test.launch
+```
+
+Experimental data will be recorded at ```src/simple_recorder/record```
 
 ## Contact
 
