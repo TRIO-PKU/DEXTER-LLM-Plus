@@ -65,3 +65,5 @@ src/main/maps/real_factory_with_warehouse/real_factory_with_warehouse.dae
 **/log/**
 *.pt
 !.gitkeep
+.catkin_workspace
+src/CMakeLists.txt

@@ -96,20 +96,17 @@ Update the following LLM parameters accordingly:
 
 Terminal 1:
 ```bash
-source devel/setup.bash
-roslaunch main gui_edge_exp_and_1.launch
+source devel/setup.bash && roslaunch main gui_edge_exp_and_1.launch
 ```
 
 Terminal 2:
 ```bash
-source devel/setup.bash
-roslaunch main sim.launch
+source devel/setup.bash && roslaunch main sim.launch
 ```
 
 Terminal 3:
 ```bash
-source devel/setup.bash
-roslaunch main test.launch
+source devel/setup.bash && roslaunch main test.launch
 ```
 
 Experimental data will be recorded at ```src/simple_recorder/record```
