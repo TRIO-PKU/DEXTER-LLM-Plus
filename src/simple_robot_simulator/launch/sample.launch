@@ -1,0 +1,13 @@
+<launch>
+
+    <!-- Start the simple robot simulator node -->
+    <node name="simple_robot_simulator" pkg="simple_robot_simulator" type="simple_robot_simulator_node" output="screen">
+        <param name="init_x" value="0.0"/>
+        <param name="init_y" value="0.0"/>
+        <param name="init_z" value="0.0"/>
+        <remap from="/move_base_simple/goal" to="/move_base_simple/goal"/>
+        <remap from="/odom" to="/odom"/>
+        <param name="speed" value="0.5"/>
+    </node>
+
+</launch>
