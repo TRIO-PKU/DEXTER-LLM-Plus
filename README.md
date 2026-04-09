@@ -1,4 +1,4 @@
-# Neuro-symbolic AI for reliable human-swarm collaboration in complex environments 🚀🤖
+# Melding LLM and temporal logic for reliable human-swarm collaboration in complex environments 🚀🤖
 
 ![Cover](docs/static/images/video_cover.jpg)
 <p align="center">
